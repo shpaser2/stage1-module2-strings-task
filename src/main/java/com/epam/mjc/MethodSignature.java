@@ -46,6 +46,19 @@ public class MethodSignature {
         return arguments;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Argument arg : this.getArguments()) {
+            sb.append(arg.toString()).append(" ");
+        }
+
+        return "accessModifier: " + this.getAccessModifier() + " " +
+                "returnType: " + this.getReturnType() + " " +
+                "methodName: " + this.getMethodName() + " " +
+                "arguments: " + sb.toString();
+    }
+
     public static class Argument {
         private String type;
         private String name;
@@ -69,6 +82,11 @@ public class MethodSignature {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return this.getType() + " " + this.getName();
         }
     }
 }
